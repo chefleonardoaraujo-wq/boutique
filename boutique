@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Method IP Holding LTDA | Governança de Ativos Intangíveis</title>
+  <meta name="description" content="Holding de métodos proprietários e gestão de ativos intelectuais. Estruturação, auditoria e licenciamento para o setor jurídico e health care.">
+
+  <!-- Open Graph (básico) -->
+  <meta property="og:title" content="Boutique Method IP Holding LTDA" />
+  <meta property="og:description" content="Governança, auditoria e licenciamento de ativos intangíveis (IP) para mercados regulados." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* --- DESIGN SYSTEM: SILENT LUXURY --- */
+    :root {
+      --col-bg-paper: #F2F0E9;     /* Alabaster */
+      --col-bg-dark: #1A1A1A;      /* Deep Charcoal */
+      --col-text-main: #2C2C2C;    /* Off-Black */
+      --col-text-light: #E0E0E0;   /* Off-White */
+      --col-gold-muted: #C5A059;   /* Ouro envelhecido */
+      --col-border: rgba(0,0,0,0.08);
+
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Manrope', sans-serif;
+
+      --container-width: 1100px;
+      --section-spacing: 120px;
+
+      /* Header fixo: usado para scroll-margin */
+      --header-offset: 110px;
+    }
+
+    /* --- RESET & BASE --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--col-bg-paper);
+      color: var(--col-text-main);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    a { text-decoration: none; color: inherit; transition: all 0.4s ease; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Faz âncoras não ficarem escondidas atrás do header fixo */
+    section { scroll-margin-top: var(--header-offset); }
+
+    /* --- UTILITÁRIOS --- */
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background-color: var(--col-gold-muted);
+      margin: 24px 0;
+    }
+    .gold-line.centered { margin: 24px auto; }
+    .text-center { text-align: center; }
+
+    /* Animação Scroll Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- BOTÕES --- */
+    .btn-outline {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid var(--col-text-main);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      background: transparent;
+      color: var(--col-text-main);
+      margin-top: 20px;
+    }
+    .btn-outline:hover {
+      background-color: var(--col-text-main);
+      color: var(--col-bg-paper);
+    }
+    .btn-outline.light {
+      border-color: rgba(255,255,255,0.3);
+      color: var(--col-text-light);
+    }
+    .btn-outline.light:hover {
+      background-color: var(--col-gold-muted);
+      border-color: var(--col-gold-muted);
+      color: var(--col-bg-dark);
+    }
+
+    /* --- HEADER --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 24px 0;
+      z-index: 1000;
+      background: rgba(242, 240, 233, 0.98);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      backdrop-filter: blur(5px);
+    }
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--col-bg-dark);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .brand span {
+      font-size: 0.6em;
+      display: block;
+      letter-spacing: 0.2em;
+      color: #666;
+      font-family: var(--font-sans);
+      margin-top: 6px;
+    }
+
+    .nav-links { display: flex; gap: 40px; align-items: center; }
+    .nav-links a {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #666;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--col-gold-muted); }
+
+    /* Hamburger Menu (Mobile) */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.35);
+    }
+    .hamburger div { width: 25px; height: 2px; background-color: var(--col-bg-dark); transition: 0.3s; }
+
+    /* Mobile Menu (corrigido z-index) */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background-color: var(--col-bg-paper);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      transform: translateX(100%);
+      transition: transform 0.4s ease-in-out;
+      z-index: 2000; /* acima do header */
+    }
+    .mobile-menu.active { transform: translateX(0); }
+    .mobile-menu a { font-family: var(--font-display); font-size: 1.5rem; color: var(--col-bg-dark); }
+    .close-menu { position: absolute; top: 30px; right: 30px; font-size: 2rem; cursor: pointer; }
+
+    /* --- HERO --- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--col-bg-dark);
+      color: var(--col-text-light);
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: #FFF;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 48px auto;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--col-gold-muted);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    /* --- MANIFESTO --- */
+    .manifesto {
+      background-color: #EAE8E0;
+      padding: var(--section-spacing) 0;
+    }
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .manifesto-text h2 { font-size: 2.5rem; margin-bottom: 24px; }
+    .manifesto-text p { font-size: 1.05rem; margin-bottom: 24px; color: #444; text-align: justify; }
+
+    .not-card {
+      background-color: var(--col-bg-paper);
+      padding: 40px;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-left: 4px solid var(--col-gold-muted);
+    }
+    .check-list li {
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      color: #555;
+    }
+    .check-list li::before {
+      content: "✕";
+      color: var(--col-gold-muted);
+      margin-right: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* --- VERTENTES --- */
+    .verticals { padding: var(--section-spacing) 0; }
+    .verticals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .v-card {
+      border: 1px solid var(--col-border);
+      padding: 60px 40px;
+      transition: all 0.4s;
+      background: #FFF;
+    }
+    .v-card:hover { border-color: var(--col-gold-muted); box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+    .v-num { font-family: var(--font-display); font-size: 2rem; color: var(--col-gold-muted); opacity: 0.5; margin-bottom: 20px; }
+    .v-card h3 { font-size: 2rem; margin-bottom: 16px; }
+
+    /* --- MÉTODO (Dark) --- */
+    .method {
+      background-color: var(--col-bg-dark);
+      color: var(--col-text-light);
+      padding: var(--section-spacing) 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    .comparison-table th {
+      text-align: left;
+      padding: 24px 0;
+      font-family: var(--font-sans);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      color: var(--col-gold-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .comparison-table td {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: #888;
+    }
+    .comparison-table td.highlight { color: #FFF; font-weight: 500; }
+
+    /* --- LICENCIAMENTO --- */
+    .licensing { padding: var(--section-spacing) 0; }
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--col-border);
+      margin-top: 60px;
+    }
+    .tier-card {
+      padding: 60px 40px;
+      border-right: 1px solid var(--col-border);
+      text-align: center;
+      background: #FFF;
+    }
+    .tier-card:last-child { border-right: none; }
+    .tier-card ul { text-align: left; margin-top: 32px; margin-bottom: 40px; }
+    .tier-card li { margin-bottom: 12px; font-size: 0.9rem; color: #555; padding-left: 20px; position: relative; }
+    .tier-card li::before { content: ""; width: 4px; height: 4px; background: var(--col-gold-muted); position: absolute; left: 0; top: 9px; border-radius: 50%; }
+
+    /* --- PRODUTOS AVULSOS --- */
+    .products {
+      background-color: #EAE8E0;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .products-grid {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .product-item {
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 16px 24px;
+      font-size: 0.85rem;
+      color: #555;
+      background: rgba(255,255,255,0.5);
+      font-family: var(--font-sans);
+    }
+
+    /* --- GOVERNANÇA (mini-seção) --- */
+    .governance { padding: var(--section-spacing) 0; }
+    .gov-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 50px;
+    }
+    .gov-card {
+      background: #FFF;
+      border: 1px solid var(--col-border);
+      padding: 40px;
+    }
+    .gov-card h3 { font-size: 1.6rem; margin-bottom: 12px; }
+    .gov-card p { color: #666; }
+
+    /* --- CONTATO (Gatekeeper Form) --- */
+    .contact { padding: var(--section-spacing) 0; max-width: 700px; margin: 0 auto; }
+    .form-editorial { display: flex; flex-direction: column; gap: 40px; }
+    .input-group label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .input-field {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #CCC;
+      background: transparent;
+      padding: 12px 0;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--col-text-main);
+      outline: none;
+      transition: border-color 0.3s;
+      border-radius: 0;
+    }
+    .input-field:focus { border-bottom-color: var(--col-gold-muted); }
+
+    /* --- FOOTER --- */
+    footer {
+      background-color: var(--col-bg-dark);
+      color: #666;
+      padding: 80px 0 40px 0;
+      font-size: 0.8rem;
+      border-top: 1px solid #333;
+    }
+    .footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+    .footer-cols a:hover { color: var(--col-gold-muted); }
+
+    /* --- RESPONSIVO --- */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.5rem; }
+      .manifesto-grid, .verticals-grid, .tiers-grid, .gov-grid { grid-template-columns: 1fr; }
+      .tiers-grid { border: none; }
+      .tier-card { border-right: none; border-bottom: 1px solid var(--col-border); margin-bottom: 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .comparison-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .comparison-table th, .comparison-table td { padding: 16px 20px; }
+      .footer-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="close-menu" onclick="toggleMenu(false)" aria-label="Fechar menu">✕</div>
+    <a href="#manifesto" onclick="toggleMenu(false)">A Holding</a>
+    <a href="#method" onclick="toggleMenu(false)">Método</a>
+    <a href="#licensing" onclick="toggleMenu(false)">Licenciamento</a>
+    <a href="#governance" onclick="toggleMenu(false)">Governança</a>
+    <a href="#contact" onclick="toggleMenu(false)">Contato</a>
+  </div>
+
+  <header>
+    <div class="container nav-flex">
+      <a href="#top" class="brand" aria-label="Boutique Method IP Holding LTDA">
+        BOUTIQUE METHOD
+        <span>IP HOLDING LTDA</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="#manifesto">A Holding</a>
+        <a href="#method">Método</a>
+        <a href="#licensing">Licenciamento</a>
+        <a href="#products">Store</a>
+        <a href="#contact" style="color: var(--col-text-main); font-weight: 500;">Iniciar Tratativas</a>
+      </nav>
+
+      <button class="hamburger" id="hamburgerBtn" type="button" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+        <div></div><div></div><div></div>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero fade-in">
+      <div class="hero-content">
+        <span class="hero-label">Gestão de Ativos Intangíveis</span>
+        <h1>A Autoridade Silenciosa</h1>
+        <p>"A excelência não é um ato. É um protocolo proprietário."</p>
+
+        <div class="gold-line centered"></div>
+
+        <p style="font-size: 1rem; font-family: var(--font-sans); margin-bottom: 40px; font-style: normal; color: rgba(255,255,255,0.8);">
+          Estruturação, auditoria e licenciamento de inteligência processual<br>
+          para escritórios jurídicos e instituições de saúde.
+        </p>
+
+        <a href="#contact" class="btn-outline light">Solicitar Avaliação Institucional</a>
+      </div>
+    </section>
+
+    <section id="manifesto" class="manifesto">
+      <div class="container manifesto-grid fade-in">
+        <div class="manifesto-text">
+          <h2>Manifesto Institucional</h2>
+          <div class="gold-line"></div>
+          <p>Em mercados de alta regulação, o diferencial competitivo reside na capacidade de transformar <em>know-how</em> tácito em ativos auditáveis. Não somos uma agência. Não vendemos cursos. Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação.</p>
+          <p>Nosso papel é codificar a cultura da sua organização em processos tangíveis, elevando o <em>valuation</em> da marca através da governança.</p>
+        </div>
+
+        <div class="not-card">
+          <h3 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; color: var(--col-gold-muted);">Política de Atuação</h3>
+          <ul class="check-list">
+            <li>Não aplicamos táticas de escassez artificial.</li>
+            <li>Não oferecemos fórmulas sem lastro operacional.</li>
+            <li>Não atuamos fora dos limites éticos (OAB/CFM).</li>
+            <li>Não atendemos sem qualificação prévia.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="verticals" class="verticals">
+      <div class="container fade-in">
+        <div class="text-center" style="margin-bottom: 60px;">
+          <h2>Vertentes de Atuação</h2>
+        </div>
+
+        <div class="verticals-grid">
+          <div class="v-card">
+            <div class="v-num">I.</div>
+            <h3>Boutique Legal™</h3>
+            <p style="color: #666; margin-bottom: 20px;">
+              Para bancas que exigem sofisticação ética. Transformamos a confiança pessoal em rituais processuais, respeitando integralmente o Estatuto da Advocacia.
+            </p>
+            <a href="#contact" class="btn-outline">Aplicação Jurídica</a>
+          </div>
+
+          <div class="v-card">
+            <div class="v-num">II.</div>
+            <h3>Boutique Health™</h3>
+            <p style="color: #666; margin-bottom: 20px;">
+              Protocolos de hospitalidade clínica e gestão de risco. Alinhamento de recepção e corpo clínico às normas de experiência do paciente (ONA/CFM).
+            </p>
+            <a href="#contact" class="btn-outline">Aplicação Saúde</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="method">
+      <div class="container fade-in">
+        <div style="max-width: 600px; margin-bottom: 40px;">
+          <h2>O Ativo Intelectual</h2>
+          <p style="color: #AAA;">
+            O Método Boutique™ é um Sistema Operacional de Negócios (Business OS): documentação, rotinas, padrões e componentes que funcionam com consistência — sem depender de heroísmo individual.
+          </p>
+        </div>
+
+        <table class="comparison-table" aria-label="Tabela comparativa do Método Boutique">
+          <thead>
+            <tr>
+              <th>Critério</th>
+              <th>Consultoria Comum</th>
+              <th>Educação Executiva</th>
+              <th style="color: #FFF;">Método Boutique™</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Foco Principal</td>
+              <td>Diagnóstico</td>
+              <td>Ensino Teórico</td>
+              <td class="highlight">Instalação de Processos</td>
+            </tr>
+            <tr>
+              <td>Dependência</td>
+              <td>Consultor</td>
+              <td>Motivação do Aluno</td>
+              <td class="highlight">Autonomia do Sistema</td>
+            </tr>
+            <tr>
+              <td>Entregável</td>
+              <td>Relatório PDF</td>
+              <td>Certificado</td>
+              <td class="highlight">Ativo Auditável (IP)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="licensing" class="licensing">
+      <div class="container fade-in">
+        <div class="text-center" style="margin-bottom: 60px;">
+          <h2>Modelos de Licenciamento</h2>
+          <p style="color: #666; margin-top: 16px;">
+            Acesso por contrato de licenciamento de uso (IP) + regras de atualização e governança (quando aplicável).
+          </p>
+        </div>
+
+        <div class="tiers-grid">
+          <div class="tier-card">
+            <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: #999;">Tier 1</span>
+            <h3 style="margin: 15px 0;">Essential</h3>
+            <p style="font-size: 0.9rem; color: #777;">Auto-Implementação</p>
+            <ul>
+              <li>Biblioteca de manuais operacionais</li>
+              <li>Assets visuais padronizados</li>
+              <li>Direito de uso interno</li>
+            </ul>
+          </div>
+
+          <div class="tier-card" style="background-color: #FAFAFA; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--col-gold-muted);"></div>
+            <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--col-gold-muted);">Tier 2 (Recomendado)</span>
+            <h3 style="margin: 15px 0;">Professional</h3>
+            <p style="font-size: 0.9rem; color: #777;">Certificação & Marca</p>
+            <ul>
+              <li>Selo “Powered by Boutique Method”</li>
+              <li>Treinamento de Key Users</li>
+              <li>Certificação de equipe</li>
+              <li>Auditoria anual leve</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: #999;">Tier 3</span>
+            <h3 style="margin: 15px 0;">Enterprise</h3>
+            <p style="font-size: 0.9rem; color: #777;">Holding & Redes</p>
+            <ul>
+              <li>Personalização total (White Label)</li>
+              <li>Conselho consultivo trimestral</li>
+              <li>Auditoria de qualidade total</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 60px;">
+          <p style="font-size: 0.8rem; color: #999; margin-bottom: 24px;">Valores disponíveis apenas mediante NDA.</p>
+          <a href="#contact" class="btn-outline">Solicitar Prospecto</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="products">
+      <div class="container fade-in">
+        <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888;">Store de Ativos Táticos</h4>
+        <h2 style="font-size: 1.8rem; margin: 16px 0;">Ferramentas Independentes</h2>
+        <p style="font-size: 0.9rem; color: #666; max-width: 600px; margin: 0 auto;">
+          Aquisições únicas (one-off). Não conferem status de licenciado ou suporte consultivo.
+        </p>
+
+        <div class="products-grid">
+          <div class="product-item">Kit Contratos Premium v.2.0</div>
+          <div class="product-item">Manual de Etiqueta Corporativa</div>
+          <div class="product-item">Protocolo de Recepção Health</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance" class="governance">
+      <div class="container fade-in">
+        <div class="text-center" style="margin-bottom: 30px;">
+          <h2>Governança & Compliance</h2>
+          <div class="gold-line centered"></div>
+          <p style="color:#666; max-width: 760px; margin: 0 auto;">
+            IP forte não é “arquivo bonito”: é cadeia de titularidade, versionamento, rastreabilidade e limites de uso. Aqui a estética existe para servir auditoria.
+          </p>
+        </div>
+
+        <div class="gov-grid">
+          <div class="gov-card">
+            <h3>Propriedade Intelectual</h3>
+            <p>Estrutura de licenciamento, regras de uso, derivação e proteção do know-how. Material pensado para operar como ativo — não como “curso”.</p>
+          </div>
+          <div class="gov-card">
+            <h3>Ética & Regulação</h3>
+            <p>Aplicação orientada a limites (OAB/CFM/boas práticas), com linguagem e operação compatíveis com mercados regulados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="fade-in">
+        <div class="text-center" style="margin-bottom: 60px;">
+          <h2>Iniciar Tratativas</h2>
+          <div class="gold-line centered"></div>
+          <p>Triagem institucional e retorno em até 72h úteis quando houver alinhamento estratégico.</p>
+        </div>
+
+        <!--
+          ✅ PRONTO PARA PRODUÇÃO:
+          - Substitua action="" por um endpoint (Formspree/Netlify/Basin/API própria).
+          - Remova o event.preventDefault() no JS e deixe enviar de verdade.
+          - Os campos já têm name="" para funcionar com qualquer serviço.
+        -->
+        <form class="form-editorial" id="leadForm">
+          <div class="input-group">
+            <label for="fullName">Nome Completo</label>
+            <input id="fullName" name="nome" type="text" class="input-field" required />
+          </div>
+
+          <div class="input-group">
+            <label for="orgSite">Organização / Site Corporativo</label>
+            <input id="orgSite" name="organizacao_site" type="text" class="input-field" placeholder="www..." required />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div class="input-group">
+              <label for="role">Cargo</label>
+              <select id="role" name="cargo" class="input-field" style="border-radius:0; -webkit-appearance: none; background: transparent;" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="socio">Sócio-Diretor</option>
+                <option value="investidor">Investidor</option>
+                <option value="juridico">Depto. Jurídico</option>
+                <option value="operacoes">Operações</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="interest">Natureza do Interesse</label>
+              <select id="interest" name="interesse" class="input-field" style="border-radius:0; -webkit-appearance: none; background: transparent;" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="licenca_legal">Licenciamento Jurídico</option>
+                <option value="licenca_saude">Licenciamento Health Care</option>
+                <option value="governanca">Governança & Auditoria</option>
+                <option value="avulsos">Produtos Avulsos</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="message">Contexto (opcional)</label>
+            <input id="message" name="contexto" type="text" class="input-field" placeholder="Ex.: número de unidades, cidade, urgência real" />
+          </div>
+
+          <div class="text-center" style="margin-top: 20px;">
+            <button type="submit" class="btn-outline">Submeter Credenciais</button>
+            <p style="font-size: 0.7rem; color: #999; margin-top: 24px;">
+              Canal preferencial: e-mail institucional. WhatsApp apenas em etapa contratual, se necessário.
+            </p>
+          </div>
+
+          <noscript>
+            <p style="margin-top: 20px; color:#777;">
+              JavaScript está desativado. Envie um e-mail para <strong>ceo@boutiquemethodip.com</strong> com seu site e objetivo.
+            </p>
+          </noscript>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-cols">
+        <div>
+          <h5 style="color: #E0E0E0; font-family: var(--font-display); letter-spacing: 0.1em; margin-bottom: 16px;">BOUTIQUE METHOD IP HOLDING</h5>
+          <p><strong>BOUTIQUE METHOD IP HOLDING LTDA</strong></p>
+          <p>CNPJ: <span id="cnpj">64.230.265/0001-69</span></p>
+          <p>Santa Maria/RS — Brasil</p>
+          <p style="margin-top: 10px;">E-mail: <a href="mailto:ceo@boutiquemethodip.com">ceo@boutiquemethodip.com</a></p>
+          <p>Telefone: <a href="tel:+5555984666591">(55) 98466-6591</a></p>
+        </div>
+
+        <div style="text-align: right;">
+          <p style="margin-bottom: 16px; color: var(--col-gold-muted);">Governança & Compliance</p>
+          <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+            <a href="#governance">Política de Governança</a>
+            <a href="#governance">Política de Privacidade</a>
+            <a href="#governance">Termos de Uso</a>
+            <a href="#contact">Contato Institucional</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #333; padding-top: 30px; display: flex; justify-content: space-between; opacity: 0.5; flex-wrap: wrap; gap: 12px;">
+        <span>© <span id="year"></span> Boutique Method IP Holding LTDA.</span>
+        <span>Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- Fade In (IntersectionObserver) ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      // Ano automático
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Fecha menu mobile com ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(false);
+      });
+    });
+
+    // --- Mobile Menu Toggle (com ARIA) ---
+    function toggleMenu(force) {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('hamburgerBtn');
+      const willOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('active');
+
+      menu.classList.toggle('active', willOpen);
+      menu.setAttribute('aria-hidden', String(!willOpen));
+      btn.setAttribute('aria-expanded', String(willOpen));
+    }
+
+    // --- Form: placeholder (por enquanto) ---
+    // Troque por envio real quando conectar um endpoint.
+    document.getElementById('leadForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = new FormData(e.target);
+      const payload = {
+        nome: data.get('nome'),
+        organizacao_site: data.get('organizacao_site'),
+        cargo: data.get('cargo'),
+        interesse: data.get('interesse'),
+        contexto: data.get('contexto') || ''
+      };
+
+      // Simulação elegante (sem perder lead se você quiser copiar/colar)
+      const mailto = new URL('mailto:ceo@boutiquemethodip.com');
+      mailto.searchParams.set('subject', 'Solicitação — Avaliação Institucional (Site)');
+      mailto.searchParams.set('body',
+        `Nome: ${payload.nome}\n` +
+        `Organização/Site: ${payload.organizacao_site}\n` +
+        `Cargo: ${payload.cargo}\n` +
+        `Interesse: ${payload.interesse}\n` +
+        `Contexto: ${payload.contexto}\n`
+      );
+
+      alert('Solicitação registrada localmente. Abrindo e-mail institucional para envio formal.');
+      window.location.href = mailto.toString();
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
